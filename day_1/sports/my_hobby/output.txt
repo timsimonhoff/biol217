@@ -1,0 +1,6 @@
+insgesamt 1
+drwx------ 2 stu246907 studierende  0 Jan 22 13:41 .
+drwx------ 2 stu246907 studierende  0 Jan 22 12:31 ..
+-rwx------ 1 stu246907 studierende  0 Jan 22 13:39 cuisine.txt
+-rwx------ 1 stu246907 studierende 11 Jan 22 13:36 my_hobby.txt
+-rwx------ 1 stu246907 studierende  0 Jan 22 13:41 output.txt
