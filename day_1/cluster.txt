@@ -1,2 +1,3 @@
+ssh -X sunam232@caucluster.rz.uni-kiel.de
 biol217_2024!!
 
