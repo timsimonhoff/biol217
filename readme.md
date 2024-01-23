@@ -51,3 +51,30 @@ for i in *fastq.gz; do fastqc $i -o ../1_fastqc/; done
 
 `sbatch anvio_slurm` for sending the task to the HPC
 
+`squeue` for all running tasks
+
+`squeue -u sunam232` for my running tasks
+
+```sh
+scp sunam232@caucluster.rz.uni-kiel.de:/work_beegfs/sunam232/Metagenomics/1_fastqc/*.html .
+```
+kopiert von Link in atuelles Verzeichnis (neues Terminal benötigt)
+
+```sh
+fastp -i BGR_130305_mapped_R1.fastq.gz -I BGR_130305_mapped_R2.fastq.gz -R fastp_report -o *R1_clean.fastq.gz -O *R2_clean.fastq.gz -t 6 -q 20
+
+
+fastp -i BGR_130527_mapped_R1.fastq.gz -I BGR_130527_mapped_R2.fastq.gz -R fastp_report -o *R1_clean.fastq.gz -O *R2_clean.fastq.gz -t 6 -q 20
+
+fastp -i BGR_130708_mapped_R1.fastq.gz -I BGR_130708_mapped_R2.fastq.gz -R fastp_report -o *R1_clean.fastq.gz -O *R2_clean.fastq.gz -t 6 -q 20
+```
+
+
+> `--html` creates an .html report file in html format\
+>`-i` input file name\
+>`-I` R2 input file name\
+>`-R` report title, here ‘_report’ is added to each file\
+>`-o` output_folder/R1.fastq.gz output file\
+>`-O` output_folder/R2.fastq.gz output file\
+>`-t` trim tail 1, default is 0, here 6 bases are trimmed\
+>`-q` 20 reads with a phred score of <=20 are trimmed
