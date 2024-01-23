@@ -61,12 +61,14 @@ scp sunam232@caucluster.rz.uni-kiel.de:/work_beegfs/sunam232/Metagenomics/1_fast
 kopiert von Link in atuelles Verzeichnis (neues Terminal benötigt)
 
 ```sh
-fastp -i BGR_130305_mapped_R1.fastq.gz -I BGR_130305_mapped_R2.fastq.gz -R fastp_report -o *R1_clean.fastq.gz -O *R2_clean.fastq.gz -t 6 -q 20
+fastp -i BGR_130305_mapped_R1.fastq.gz -I BGR_130305_mapped_R2.fastq.gz -R fastp_report -o BGR_130305_mapped_R1_clean.fastq.gz -O BGR_130305_mapped_R2_clean.fastq.gz -t 6 -q 20
+```
 
-
-fastp -i BGR_130527_mapped_R1.fastq.gz -I BGR_130527_mapped_R2.fastq.gz -R fastp_report -o *R1_clean.fastq.gz -O *R2_clean.fastq.gz -t 6 -q 20
-
-fastp -i BGR_130708_mapped_R1.fastq.gz -I BGR_130708_mapped_R2.fastq.gz -R fastp_report -o *R1_clean.fastq.gz -O *R2_clean.fastq.gz -t 6 -q 20
+```sh
+fastp -i BGR_130527_mapped_R1.fastq.gz -I BGR_130527_mapped_R2.fastq.gz -R fastp_report -o BGR_130527_mapped_R1_clean.fastq.gz -O BGR_130527_mapped_R2_clean.fastq.gz -t 6 -q 20
+```
+```sh
+fastp -i BGR_130708_mapped_R1.fastq.gz -I BGR_130708_mapped_R2.fastq.gz -R fastp_report -o BGR_130527_mapped_R1_clean.fastq.gz -O BGR_130708_mapped_R2_clean.fastq.gz -t 6 -q 20
 ```
 
 
@@ -78,3 +80,15 @@ fastp -i BGR_130708_mapped_R1.fastq.gz -I BGR_130708_mapped_R2.fastq.gz -R fastp
 >`-O` output_folder/R2.fastq.gz output file\
 >`-t` trim tail 1, default is 0, here 6 bases are trimmed\
 >`-q` 20 reads with a phred score of <=20 are trimmed
+
+```sh
+cd /work_beegfs/sunam232/Metagenomics/2_fastp
+megahit -1 ./BGR_130305_mapped_clean_R1.fastq.gz -1 ./BGR_130527_mapped_clean_R1.fastq.gz -1 ./BGR_130527_mapped_clean_R1.fastq.gz -2 ./BGR_130305_mapped_clean_R2.fastq.gz -2 ./BGR_130527_mapped_clean_R2.fastq.gz -2 ./BGR_130527_mapped_clean_R2.fastq.gz --min-contig-len 1000 --presets meta-large -m 0.85 -o ../3_coassembly -t 12
+```
+
+```
+-1 path to R1 file
+-2 path to R2 file, for paired end readings only
+-o path to output folder
+```
+
