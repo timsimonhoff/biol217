@@ -156,3 +156,26 @@ anvi-gen-contigs-database -f contigs.anvio.fa -o ../5_anvio_profiles/contigs.db 
 
 anvi-run-hmms -c contigs.db --num-threads 4
 ```
+
+## binning with anvio
+
+
+```sh
+cd /work_beegfs/sunam232/Metagenomics/3_1_binning 
+
+for i in *.bam; do anvi-init-bam $i -o "$i".sorted.bam; done
+
+
+anvi-profile -i BGR_130305.sorted.bam -c contigs.db --output-dir ../5_anvio_profiles
+
+anvi-profile -i BGR_130527.sorted.bam -c contigs.db --output-dir ../5_anvio_profiles
+
+anvi-profile -i BGR_130708.sorted.bam -c contigs.db --output-dir ../5_anvio_profiles
+
+```
+
+
+```sh
+anvi-merge /PATH/TO/SAMPLE1/? /PATH/TO/SAMPLE2/? /PATH/TO/SAMPLE3/? -o ? -c ? --enforce-hierarchical-clustering
+```
+
