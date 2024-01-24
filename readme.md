@@ -154,7 +154,5 @@ samtools view -bS 130708.sam > BGR_130708.bam
 ```sh
 anvi-gen-contigs-database -f contigs.anvio.fa -o ../5_anvio_profiles/contigs.db -n 'biol217'
 
-anvi-run-hmms -c contigs.db
-
-
+anvi-run-hmms -c contigs.db --num-threads 4
 ```
