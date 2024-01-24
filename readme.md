@@ -133,13 +133,13 @@ anvi-script-reformat-fasta final.contigs.fa -o /work_beegfs/sunam232/Metagenomic
 cd /work_beegfs/sunam232/Metagenomics/3_1_binning 
 module load bowtie2
 bowtie2-build contigs.anvio.fa contigs.anvio.fa.index
-bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130305_mapped_clean__R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130305_mapped_clean__R2.fastq.gz -S 130305.sam
+bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130305_mapped_clean_R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130305_mapped_clean_R2.fastq.gz -S 130305.sam
 
 bowtie2-build contigs.anvio.fa contigs.anvio.fa.index
-bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130527_mapped_clean__R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130527_mapped_clean__R2.fastq.gz -S 130527.sam
+bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130527_mapped_clean_R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130527_mapped_clean_R2.fastq.gz -S 130527.sam
 
 bowtie2-build contigs.anvio.fa contigs.anvio.fa.index
-bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130708_mapped_clean__R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130708_mapped_clean__R2.fastq.gz -S 130708.sam
+bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130708_mapped_clean_R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130708_mapped_clean_R2.fastq.gz -S 130708.sam
 
 ```
 
@@ -150,3 +150,11 @@ samtools view -bS 130527.sam > BGR_130527.bam
 samtools view -bS 130708.sam > BGR_130708.bam
 ```
 
+### contigs data preparation
+```sh
+anvi-gen-contigs-database -f contigs.anvio.fa -o ../5_anvio_profiles/contigs.db -n 'biol217'
+
+anvi-run-hmms -c contigs.db
+
+
+```
