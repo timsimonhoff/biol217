@@ -92,3 +92,61 @@ megahit -1 BGR_130305_mapped_clean_R1.fastq.gz -1 BGR_130527_mapped_clean_R1.fas
 -o path to output folder
 ```
 
+# day 3
+
+checking if assembly worked
+
+`grep -c ">" final.contigs.fa` 
+
+57414
+
+`scp sunam232@caucluster.rz.uni-kiel.de:/work_beegfs/sunam232/Metagenomics/3_coassembly/final.contigs.fastg .`
+
+## Quality Assessment of Assemblies
+
+```sh
+cd /work_beegfs/sunam232/Metagenomics/3_coassembly
+metaquast -t 6 -o /work_beegfs/sunam232/Metagenomics/3_metaquast_out/final.contigs.fastg -m 1000 final.contigs.fa
+```
+
+### What is your N50 value? 
+N50 = 2963
+### Why is this value relevant?
+
+### How many contigs are assembled?
+57414
+
+### What is the total length of the contigs?
+
+145675865
+
+## Genomes Binning
+
+```sh
+cd /work_beegfs/sunam232/Metagenomics/3_coassembly
+anvi-script-reformat-fasta final.contigs.fa -o /work_beegfs/sunam232/Metagenomics/3_1_binning/contigs.anvio.fa --min-len 1000 --simplify-names --report-file binning_conversion.txt
+```
+
+## Mapping
+
+```sh
+cd /work_beegfs/sunam232/Metagenomics/3_1_binning 
+module load bowtie2
+bowtie2-build contigs.anvio.fa contigs.anvio.fa.index
+bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130305_mapped_clean__R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130305_mapped_clean__R2.fastq.gz -S 130305.sam
+
+bowtie2-build contigs.anvio.fa contigs.anvio.fa.index
+bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130527_mapped_clean__R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130527_mapped_clean__R2.fastq.gz -S 130527.sam
+
+bowtie2-build contigs.anvio.fa contigs.anvio.fa.index
+bowtie2 --very-fast -x contigs.anvio.fa.index -1 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130708_mapped_clean__R1.fastq.gz -2 /work_beegfs/sunam232/Metagenomics/2_fastp/BGR_130708_mapped_clean__R2.fastq.gz -S 130708.sam
+
+```
+
+```sh
+module load samtools
+samtools view -bS 130305.sam > BGR_130305.bam
+samtools view -bS 130527.sam > BGR_130527.bam
+samtools view -bS 130708.sam > BGR_130708.bam
+```
+
