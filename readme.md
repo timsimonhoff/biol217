@@ -249,3 +249,9 @@ METABAT
 archaeum completion 97.3 
 archaeum contamination/ redundancy 5.2
 Bacteria With high quality 13 
+
+
+```sh
+anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --list-collections
+anvi-summarize -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT2 -o SUMMARY_METABAT2 --just-do-it
+```
