@@ -166,16 +166,53 @@ cd /work_beegfs/sunam232/Metagenomics/3_1_binning
 for i in *.bam; do anvi-init-bam $i -o "$i".sorted.bam; done
 
 
-anvi-profile -i BGR_130305.bam.sorted.bam -c contigs.db --output-dir ../5_anvio_profiles/130305
+anvi-profile -i BGR_130305.bam.sorted.bam -c ../5_anvio_profiles/contigs.db --output-dir ../5_anvio_profiles/BGR_130305
 
-anvi-profile -i BGR_130527.bam.sorted.bam -c contigs.db --output-dir ../5_anvio_profiles/130527
+anvi-profile -i BGR_130527.bam.sorted.bam -c ../5_anvio_profiles/contigs.db --output-dir ../5_anvio_profiles/BGR_130527
 
-anvi-profile -i BGR_130708.bam.sorted.bam -c contigs.db --output-dir ../5_anvio_profiles/130708
+anvi-profile -i BGR_130708.bam.sorted.bam -c ../5_anvio_profiles/contigs.db --output-dir ../5_anvio_profiles/BGR_130708
 
+```
+
+
+
+# visualisation
+
+```sh
+srun --reservation=biol217 --pty --mem=10G --nodes=1 --tasks-per-node=1 --cpus-per-task=1 --nodelist=n100 --partition=base /bin/bash
+```
+
+```sh
+module load gcc12-env/12.1.0
+module load miniconda3/4.12.0
+conda activate anvio-8
+
+anvi-display-contigs-stats contigs.db
+```
+
+neues Terminal
+
+```sh
+ssh -L 8060:localhost:8080 sunam232@caucluster.rz.uni-kiel.de
+ssh -L 8080:localhost:8080 n100
+```
+
+```sh
+cd .
+anvi-merge /work_beegfs/sunam232/Metagenomics/5_anvio_profiles/BGR_130305/PROFILE.db /work_beegfs/sunam232/Metagenomics/5_anvio_profiles/BGR_130527/PROFILE.db /work_beegfs/sunam232/Metagenomics/5_anvio_profiles/BGR_130708/PROFILE.db -o /work_beegfs/sunam232/Metagenomics/6_anvi-merge/ -c /work_beegfs/sunam232/Metagenomics/5_anvio_profiles/contigs.db --enforce-hierarchical-clustering
+```
+
+```sh
+cd /work_beegfs/sunam232/Metagenomics
+anvi-cluster-contigs -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -C METABAT --driver metabat2 --just-do-it --log-file log-metabat2
+
+anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -o SUMMARY_METABAT -C METABAT
 ```
 
 
 ```sh
-anvi-merge /PATH/TO/SAMPLE1/? /PATH/TO/SAMPLE2/? /PATH/TO/SAMPLE3/? -o ? -c ? --enforce-hierarchical-clustering
-```
+cd /work_beegfs/sunam232/Metagenomics
+anvi-cluster-contigs -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -C MAXBIN2 --driver maxbin2 --just-do-it --log-file log-maxbin2
 
+anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -o SUMMARY_MAXBIN -C MAXBIN2
+```
