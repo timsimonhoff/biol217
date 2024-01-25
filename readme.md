@@ -211,3 +211,41 @@ anvi-cluster-contigs -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.
 
 anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -o SUMMARY_MAXBIN -C MAXBIN2
 ```
+
+
+```sh
+anvi-estimate-genome-completeness -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT
+```
+
+```sh
+anvi-estimate-genome-completeness -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --list-collections
+```
+
+```sh
+module load gcc12-env/12.1.0
+module load miniconda3/4.12.0
+conda activate anvio-8
+
+anvi-interactive -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -C METABAT
+```
+
+
+```sh
+module load gcc12-env/12.1.0
+module load miniconda3/4.12.0
+conda activate anvio-8
+
+anvi-interactive -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -C MAXBIN2
+``
+
+METABAT gives best quality for archaea binning & general less redundancy/ contamination
+
+MAXBIN 
+archaeum completion 96.05
+archaeum contamination/ redundancy 80.02
+Bacteria With high quality 3
+
+METABAT
+archaeum completion 97.3 
+archaeum contamination/ redundancy 5.2
+Bacteria With high quality 13 
