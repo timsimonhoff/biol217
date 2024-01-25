@@ -253,5 +253,20 @@ Bacteria With high quality 13
 
 ```sh
 anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --list-collections
-anvi-summarize -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT2 -o SUMMARY_METABAT2 --just-do-it
+anvi-summarize -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT -o SUMMARY_METABAT2 --just-do-it
+```
+
+
+```sh
+cd ./SUMMARY_METABAT2/bin_by_bin/
+
+mkdir ../../ARCHAEA_BIN_REFINEMENT
+
+cp ./METABAT__25/*.fa ../../ARCHAEA_BIN_REFINEMENT/
+cp ./METABAT__41/*.fa ../../ARCHAEA_BIN_REFINEMENT/
+cp ./METABAT__14/*.fa ../../ARCHAEA_BIN_REFINEMENT/
+```
+
+```sh
+anvi-estimate-genome-completeness -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT > METABAT_table.txt
 ```
