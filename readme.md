@@ -257,6 +257,28 @@ anvi-summarize -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C 
 ```
 
 
+
+
+```sh
+anvi-estimate-genome-completeness -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT > METABAT_table.txt
+```
+
+```sh
+module load gcc12-env/12.1.0
+module load miniconda3/4.12.0
+conda activate anvio-8
+
+anvi-interactive -p /PATH/TO/merged_profiles/PROFILE.db -c /PATH/TO/contigs.db -C YOUR_COLLECTION
+```
+
+
+```sh
+anvi-summarize -p /PATH/TO/merged_profiles/PROFILE.db -c /PATH/TO/contigs.db --list-collections
+
+anvi-summarize -c /PATH/TO/contigs.db -p /PATH/TO/merged_profiles/profile.db -C METABAT2 -o SUMMARY_METABAT2 --just-do-it
+```
+
+
 ```sh
 cd ./SUMMARY_METABAT2/bin_by_bin/
 
@@ -265,8 +287,4 @@ mkdir ../../ARCHAEA_BIN_REFINEMENT
 cp ./METABAT__25/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__41/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__14/*.fa ../../ARCHAEA_BIN_REFINEMENT/
-```
-
-```sh
-anvi-estimate-genome-completeness -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT > METABAT_table.txt
 ```
