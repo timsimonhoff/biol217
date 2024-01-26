@@ -288,3 +288,67 @@ cp ./METABAT__25/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__41/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__14/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 ```
+
+
+# day 5
+
+## chimera detection
+
+```sh
+module load gcc12-env/12.1.0
+module load miniconda3/4.12.0
+conda activate gunc
+```
+
+```sh
+cd /work_beegfs/sunam232/Metagenomics/ARCHAEA_BIN_REFINEMENT/
+
+mkdir GUNC
+
+for i in *.fa; do gunc run -i "$i" -r /work_beegfs/sunam232/Databases/gunc_db_progenomes2.1.dmnd --out_dir GUNC --threads 10 --detailed_output; done
+gunc plot -d ./GUNC/diamond_output/METABAT__25-contigs.diamond.progenomes_2.1.out -g ./GUNC/genes_calls/gene_counts.json
+gunc plot -d ./GUNC/diamond_output/METABAT__14-contigs.diamond.progenomes_2.1.out -g ./GUNC/genes_calls/gene_counts.json
+gunc plot -d ./GUNC/diamond_output/METABAT__41-contigs.diamond.progenomes_2.1.out -g ./GUNC/genes_calls/gene_counts.json
+```
+
+## Manual bin refinement
+```sh
+cd /work_beegfs/sunam232/Metagenomics/ARCHAEA_BIN_REFINEMENT/
+anvi-refine -c ../5_anvio_profiles/contigs.db -C METABAT -p ../6_anvi-merge/PROFILE.db --bin-id METABAT__25
+anvi-refine -c ../5_anvio_profiles/contigs.db -C METABAT -p ../6_anvi-merge/PROFILE.db --bin-id METABAT__41
+anvi-refine -c ../5_anvio_profiles/contigs.db -C METABAT -p ../6_anvi-merge/PROFILE.db --bin-id METABAT__14
+```
+
+```sh
+module load gcc12-env/12.1.0
+module load miniconda3/4.12.0
+conda activate anvio-8
+
+anvi-refine -c /PATH/TO/contigs.db -C METABAT -p /PATH/TO/merged_profiles/PROFILE.db --bin-id METABAT__25
+```
+
+
+```sh
+anvi-inspect -p ../6_anvi-merge/PROFILE.db -c ../5_anvio_profiles/contigs.db
+anvi-script-get-coverage-from-bam
+```
+
+## taxonomy
+
+You will now add taxonomic annotations to your MAG.
+
+-> associates the single-copy core genes in your contigs-db with taxnomy information:
+```sh
+cd /work_beegfs/sunam232/Metagenomics/
+
+anvi-run-scg-taxonomy -c ./5_anvio_profiles/contigs.db -T 20 -P 2
+```
+
+-> makes quick taxonomy estimates for genomes, metagenomes, or bins stored in your contigs-db using single-copy core genes:
+```sh
+anvi-estimate-scg-taxonomy -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db --metagenome-mode --compute-scg-coverages --update-profile-db-with-taxonomy > tax.txt
+```
+
+```sh
+anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --metagenome-mode -o ./SUMMARY_METABAT2 -C METABAT2
+```
