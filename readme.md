@@ -353,6 +353,3 @@ anvi-estimate-scg-taxonomy -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PR
 anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --metagenome-mode -o ./SUMMARY_METABAT2 -C METABAT2
 ```
 
-```sh
-anvi-dereplicate-genomes -i /PATH/TO/file.txt --program fastANI --similarity-threshold 0.95 -o ANI --log-file log_ANI -T 10
-```
