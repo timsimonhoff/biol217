@@ -42,8 +42,9 @@ after trimming:
 
 
 How good is the quality of genome?
-
-
+completeness: 98.88          Contamination:  0.19 
+high quality, nearly complete
+N50 über 50% in einem contig
 
 Why did we use Hybrid assembler?
     combine the best of long and short reads
@@ -57,4 +58,6 @@ Did we use Single or Paired end reads? Why?
 
 
 Write down about the classification of genome we have used here
-    drftg
+Taxonomy: d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Bacteroidaceae;g__Bacteroides;s__Bacteroides sp002491635
+
+
