@@ -61,3 +61,63 @@ Write down about the classification of genome we have used here
 Taxonomy: d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Bacteroidaceae;g__Bacteroides;s__Bacteroides sp002491635
 
 
+# Day 7
+
+```sh
+anvi-display-contigs-stats $WORK/pangenomics/02_anvio_pangenome/V_jascida_genomes/*db
+```
+
+## Create external genomes file
+
+```sh
+anvi-script-gen-genomes-file --input-dir $WORK/pangenomics/02_anvio_pangenome/V_jascida_genomes/ -o external-genomes.txt
+```
+
+## Investigate contamination
+
+```sh
+anvi-estimate-genome-completeness -e external-genomes.txt
+```
+
+## 7. Visualise contigs for refinement
+```sh
+anvi-profile -c V_jascida_52.db --sample-name V_jascida_52 --output-dir V_jascida_52 --blank
+```
+
+```sh
+anvi-interactive -c V_jascida_52.db -p V_jascida_52/PROFILE.db
+```
+
+```sh
+ssh -L 8060:localhost:8080 sunam226@caucluster.rz.uni-kiel.de
+ssh -L 8080:localhost:8080 n171
+```
+
+```sh
+anvi-split -p V_jascida_52/PROFILE.db -c V_jascida_52.db -C default -o V_jascida_52_SPLIT
+
+# Here are the files you created
+#V_jascida_52_SPLIT/V_jascida_52_CLEAN/CONTIGS.db
+
+sed 's/V_jascida_52.db/V_jascida_52_SPLIT\/V_jascida_52_CLEAN\/CONTIGS.db/g' external-genomes.txt > external-genomes-final.txt
+```
+
+## Estimate completeness of split vs. unsplit genome:
+```sh
+anvi-estimate-genome-completeness -e external-genomes.txt
+anvi-estimate-genome-completeness -e external-genomes-final.txt
+```
+
+
+## Compute pangenome
+```sh
+anvi-gen-genomes-storage -e external-genomes-final.txt -o V_jascida-GENOMES.db
+anvi-pan-genome -g V_jascida-GENOMES.db --project-name V_jascida --num-threads 4     
+```
+
+## Displaying pangenome
+
+```sh
+anvi-display-pan -p V_jascida/V_jascida-PAN.db -g V_jascida-GENOMES.db
+```
+
