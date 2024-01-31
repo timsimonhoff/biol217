@@ -121,3 +121,18 @@ anvi-pan-genome -g V_jascida-GENOMES.db --project-name V_jascida --num-threads 4
 anvi-display-pan -p V_jascida/V_jascida-PAN.db -g V_jascida-GENOMES.db
 ```
 
+
+
+# Own Transcriptomics
+
+```sh
+grabseqs -t 4 -m SRP081251
+```
+
+```sh
+module load fastqc
+fastqc -t 4 -o fastqc_output *.fastq.gz
+```
+
+for i in *.fastq.gz; do fastp -i $i -o ${i}_cleaned.fastq.gz -h ../qc_reports/${i}_fastp.html -j ${i}_fastp.json -w 4 -q 20 -z 4; done
+
