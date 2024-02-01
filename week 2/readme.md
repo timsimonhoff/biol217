@@ -138,18 +138,18 @@ for i in *.fastq.gz; do fastp -i $i -o ${i}_cleaned.fastq.gz -h ../qc_reports/${
 
 # day 8
 
-log2 - downregulated in mt
-RS03790: -1.9, yes
-RS06645: -1.71, ?
-RS00155: -1.58, mostly yes
-RS02310: -1.3, yes
-RS00765: -1.23, yes
+log2 - downregulated in mt\
+RS03790: -1.9, yes\
+RS06645: -1.71, ?\
+RS00155: -1.58, mostly yes\
+RS02310: -1.3, yes\
+RS00765: -1.23, yes\
 
-log2 + upregulated in mt
-RS00150: 2.06, yes 
-RS04770: 1.2, yes
-RS05370: 1.16, yes
-RS07870: 1.16, yes
+log2 + upregulated in mt\
+RS00150: 2.06, yes \
+RS04770: 1.2, yes\
+RS05370: 1.16, yes\
+RS07870: 1.16, yes\
 RS05335: 1.15, yes
 
 
@@ -157,12 +157,29 @@ RS05335: 1.15, yes
 tnoar : total number of aligned reads
 
 
--1.9
--1.71
--1.58
--1.3
--1.23
+# Fotos hinzufügen
 
 ![igb](../resources/igb:_RS00765.png)
 
 ![igb](../resources/igb:_RS05335.png)
+
+
+# csrA:
+start codon:
+ATG
+
+stop codon:
+TAA
+
+length:
+61 aa
+
+SD:-7 (last nucleotide)
+
+AGGAG
+
+upstream gene: 
+alaS (oder )
+
+translated?:
+yes, a lot of coverage from Riboprofiling
