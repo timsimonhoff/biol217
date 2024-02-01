@@ -163,3 +163,6 @@ tnoar : total number of aligned reads
 -1.3
 -1.23
 
+![igb](../resources/igb:_RS00765.png)
+
+![igb](../resources/igb:_RS05335.png)
