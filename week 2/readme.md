@@ -136,3 +136,30 @@ fastqc -t 4 -o fastqc_output *.fastq.gz
 
 for i in *.fastq.gz; do fastp -i $i -o ${i}_cleaned.fastq.gz -h ../qc_reports/${i}_fastp.html -j ${i}_fastp.json -w 4 -q 20 -z 4; done
 
+# day 8
+
+log2 - downregulated in mt
+RS03790: -1.9, yes
+RS06645: -1.71, ?
+RS00155: -1.58, mostly yes
+RS02310: -1.3, yes
+RS00765: -1.23, yes
+
+log2 + upregulated in mt
+RS00150: 2.06, yes 
+RS04770: 1.2, yes
+RS05370: 1.16, yes
+RS07870: 1.16, yes
+RS05335: 1.15, yes
+
+
+
+tnoar : total number of aligned reads
+
+
+-1.9
+-1.71
+-1.58
+-1.3
+-1.23
+
