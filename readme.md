@@ -269,6 +269,7 @@ anvi-summarize -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C 
 
 
 
+
 ```sh
 anvi-estimate-genome-completeness -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT > METABAT_table.txt
 ```
@@ -298,6 +299,16 @@ cp ./METABAT__25/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__41/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__14/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 ```
+
+
+![igb](/resources/METABAT_14.png)
+
+![igb](/resources/METABAT_41.png)
+
+The only bin refinement that was necessary was for METABAT_25, here the contamination dropped by several % by excluding some reads. However, anvio-interactive was not possible to open from home, therefore i cannot provide numbers.
+
+![igb](/resources/METABAT_25.png)
+
 
 
 # day 5
@@ -350,8 +361,7 @@ anvi-inspect -p ../6_anvi-merge/PROFILE.db -c ../5_anvio_profiles/contigs.db
 anvi-script-get-coverage-from-bam
 ```
 
-<object data="../resources/Refining_METABAT_14_from_METABAT.pdf" type="application/pdf" width="100%"> 
-</object>
+
 
 
 
