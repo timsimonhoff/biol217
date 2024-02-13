@@ -159,9 +159,9 @@ tnoar : total number of aligned reads
 
 # Fotos hinzufügen
 
-![igb](./biol217/resources/igb_RS00765.png)
+![igb](/resources/igb_RS00765.png)
 
-![igb](./biol217/resources/igb_RS05335.png)
+![igb](/resources/igb_RS05335.png)
 
 
 # csrA:
