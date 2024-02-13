@@ -97,6 +97,12 @@ checking if assembly worked
 
 `scp sunam232@caucluster.rz.uni-kiel.de:/work_beegfs/sunam232/Metagenomics/3_coassembly/final.contigs.fastg .`
 
+
+![igb](/resources/day2.png)
+
+In this graph one can see the different assembled contigs. They are sorted by size.
+
+
 ## Quality Assessment of Assemblies
 
 ```sh
@@ -107,6 +113,7 @@ metaquast -t 6 -o /work_beegfs/sunam232/Metagenomics/3_metaquast_out/final.conti
 ### What is your N50 value? 
 N50 = 2963
 ### Why is this value relevant?
+size of the largest contig --> contigs larger than that have at least 50% the bases of the assembly
 
 ### How many contigs are assembled?
 57414
@@ -236,9 +243,12 @@ module load miniconda3/4.12.0
 conda activate anvio-8
 
 anvi-interactive -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -C MAXBIN2
-``
+```
+ ## Which binning strategy gives you the best quality for the Archaeum bins? 
 
 METABAT gives best quality for archaea binning & general less redundancy/ contamination
+
+## How many Archaea bins do you get that are of High Quality? How many bacteria bins do you get that are of High Quality?
 
 MAXBIN 
 archaeum completion 96.05
@@ -250,7 +260,7 @@ archaeum completion 97.3
 archaeum contamination/ redundancy 5.2
 Bacteria With high quality 13 
 
-
+# day 4
 ```sh
 anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --list-collections
 anvi-summarize -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT -o SUMMARY_METABAT2 --just-do-it
@@ -311,6 +321,12 @@ gunc plot -d ./GUNC/diamond_output/METABAT__14-contigs.diamond.progenomes_2.1.ou
 gunc plot -d ./GUNC/diamond_output/METABAT__41-contigs.diamond.progenomes_2.1.out -g ./GUNC/genes_calls/gene_counts.json
 ```
 
+
+## Do you get Archaea bins that are chimeric?
+Metabat_14 is chimeric
+Metabat_41 down to species level not chimeric, but then
+Metabat_25 not chimeric
+
 ## Manual bin refinement
 ```sh
 cd /work_beegfs/sunam232/Metagenomics/ARCHAEA_BIN_REFINEMENT/
@@ -332,6 +348,8 @@ anvi-refine -c /PATH/TO/contigs.db -C METABAT -p /PATH/TO/merged_profiles/PROFIL
 anvi-inspect -p ../6_anvi-merge/PROFILE.db -c ../5_anvio_profiles/contigs.db
 anvi-script-get-coverage-from-bam
 ```
+
+
 
 ## Taxonomy
 
