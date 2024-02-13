@@ -328,6 +328,7 @@ Metabat_41 down to species level not chimeric, but then
 Metabat_25 not chimeric
 
 ## Manual bin refinement
+
 ```sh
 cd /work_beegfs/sunam232/Metagenomics/ARCHAEA_BIN_REFINEMENT/
 anvi-refine -c ../5_anvio_profiles/contigs.db -C METABAT -p ../6_anvi-merge/PROFILE.db --bin-id METABAT__25
@@ -348,6 +349,9 @@ anvi-refine -c /PATH/TO/contigs.db -C METABAT -p /PATH/TO/merged_profiles/PROFIL
 anvi-inspect -p ../6_anvi-merge/PROFILE.db -c ../5_anvio_profiles/contigs.db
 anvi-script-get-coverage-from-bam
 ```
+
+<object data="../resources/Refining_METABAT_14_from_METABAT.pdf" type="application/pdf" width="100%"> 
+</object>
 
 
 
