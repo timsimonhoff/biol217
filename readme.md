@@ -355,7 +355,7 @@ conda activate anvio-8
 anvi-refine -c /PATH/TO/contigs.db -C METABAT -p /PATH/TO/merged_profiles/PROFILE.db --bin-id METABAT__25
 ```
 
-
+#### commands did not work
 ```sh
 anvi-inspect -p ../6_anvi-merge/PROFILE.db -c ../5_anvio_profiles/contigs.db
 anvi-script-get-coverage-from-bam

@@ -28,10 +28,13 @@ for i in $WORK/genomics/1_short_reads_qc/2_cleaned_reads/*.gz; do fastqc $i -o $
 jobinfo
 ```
 
-before trimming:
+reads before trimming:
+
 	241155E_R1: 1639549
     241155E_R2: 1639549
-after trimming: 
+
+reads after trimming: 
+
     241155E_R1: 1613392
     241155E_R2: 1613392
     quality improved
@@ -42,18 +45,22 @@ after trimming:
 
 
 How good is the quality of genome?
-completeness: 98.88          Contamination:  0.19 
-high quality, nearly complete
-N50 über 50% in einem contig
+
+    completeness: 98.88          Contamination:  0.19 
+    high quality, nearly complete
+    N50 über 50% in einem contig
 
 Why did we use Hybrid assembler?
+
     combine the best of long and short reads
 
 
 What is the difference between short and long reads?
+
     short reads 150-300 bp, long rerads up to 10,000 bp
     
 Did we use Single or Paired end reads? Why?
+
     paired end reads, to increase the reliability of the reads and minimize errors
 
 
