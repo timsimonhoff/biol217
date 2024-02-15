@@ -119,7 +119,6 @@ size of the largest contig --> contigs larger than that have at least 50% the ba
 57414
 
 ### What is the total length of the contigs?
-
 145675865
 
 ## Genomes Binning
@@ -219,6 +218,9 @@ anvi-cluster-contigs -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.
 anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db -o SUMMARY_MAXBIN -C MAXBIN2
 ```
 
+Metabat2: 1archaea bin
+Maxbin: 1archaea bin
+
 
 ```sh
 anvi-estimate-genome-completeness -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT
@@ -266,10 +268,6 @@ anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --l
 anvi-summarize -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT -o SUMMARY_METABAT2 --just-do-it
 ```
 
-
-
-
-
 ```sh
 anvi-estimate-genome-completeness -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PROFILE.db -C METABAT > METABAT_table.txt
 ```
@@ -282,13 +280,11 @@ conda activate anvio-8
 anvi-interactive -p /PATH/TO/merged_profiles/PROFILE.db -c /PATH/TO/contigs.db -C YOUR_COLLECTION
 ```
 
-
 ```sh
 anvi-summarize -p /PATH/TO/merged_profiles/PROFILE.db -c /PATH/TO/contigs.db --list-collections
 
 anvi-summarize -c /PATH/TO/contigs.db -p /PATH/TO/merged_profiles/profile.db -C METABAT2 -o SUMMARY_METABAT2 --just-do-it
 ```
-
 
 ```sh
 cd ./SUMMARY_METABAT2/bin_by_bin/
@@ -299,7 +295,6 @@ cp ./METABAT__25/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__41/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 cp ./METABAT__14/*.fa ../../ARCHAEA_BIN_REFINEMENT/
 ```
-
 
 ![igb](/resources/METABAT_14.png)
 
@@ -338,6 +333,10 @@ Metabat_14 is chimeric
 Metabat_41 down to species level not chimeric, but then
 Metabat_25 not chimeric
 
+## In your own words (2 sentences max), explain what is a chimeric bin
+
+a chimeric bin is a bin contaminated by different species.
+
 ## Manual bin refinement
 
 ```sh
@@ -355,16 +354,13 @@ conda activate anvio-8
 anvi-refine -c /PATH/TO/contigs.db -C METABAT -p /PATH/TO/merged_profiles/PROFILE.db --bin-id METABAT__25
 ```
 
-#### commands did not work
+#### commands that did not work
 ```sh
 anvi-inspect -p ../6_anvi-merge/PROFILE.db -c ../5_anvio_profiles/contigs.db
 anvi-script-get-coverage-from-bam
 ```
 
-
-
-
-
+ 
 ## Taxonomy
 
 You will now add taxonomic annotations to your MAG.
@@ -385,3 +381,7 @@ anvi-estimate-scg-taxonomy -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PR
 anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --metagenome-mode -o ./SUMMARY_METABAT2 -C METABAT2
 ```
 
+##Did you get a species assignment to the ARCHAEA bins previously identified?\\
+yes, Metabat_25 is Methanoculleus sp012797575\\
+Metabat_41 is Methanoculleus thermohydrogenotrophicum\\
+Metabat_14 is Methanosarcina flavescens\\

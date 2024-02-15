@@ -37,7 +37,7 @@ reads after trimming:
 
     241155E_R1: 1613392
     241155E_R2: 1613392
-    quality improved
+   -> quality improved
 
 
 
