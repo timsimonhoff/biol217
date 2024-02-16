@@ -381,7 +381,7 @@ anvi-estimate-scg-taxonomy -c ./5_anvio_profiles/contigs.db -p ./6_anvi-merge/PR
 anvi-summarize -p ./6_anvi-merge/PROFILE.db -c ./5_anvio_profiles/contigs.db --metagenome-mode -o ./SUMMARY_METABAT2 -C METABAT2
 ```
 
-##Did you get a species assignment to the ARCHAEA bins previously identified?\\
+## Did you get a species assignment to the ARCHAEA bins previously identified?\\
 yes, Metabat_25 is Methanoculleus sp012797575\\
 Metabat_41 is Methanoculleus thermohydrogenotrophicum\\
 Metabat_14 is Methanosarcina flavescens\\

@@ -247,8 +247,9 @@ module load fastqc
 fastqc -t 4 -o fastqc_output *.fastq.gz
 ```
 
+```sh
 for i in *.fastq.gz; do fastp -i $i -o ${i}_cleaned.fastq.gz -h ../qc_reports/${i}_fastp.html -j ${i}_fastp.json -w 4 -q 20 -z 4; done
-
+```
 # day 8
 
 log2 - downregulated in mt\
