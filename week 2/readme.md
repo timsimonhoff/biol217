@@ -37,10 +37,15 @@ reads after trimming:
 
     241155E_R1: 1613392
     241155E_R2: 1613392
-   -> quality improved
+   -> quality improved, phred score lower
 
-
-
+NanoPlot:
+reads before trimming:
+    15963
+    quality: 10.4
+reads after trimming:
+    12446
+    quality: 11.4
 
 
 
@@ -57,7 +62,7 @@ Why did we use Hybrid assembler?
 
 What is the difference between short and long reads?
 
-    short reads 150-300 bp, long rerads up to 10,000 bp
+    short reads 150-300 bp, long reads up to 10,000 bp
     
 Did we use Single or Paired end reads? Why?
 
