@@ -322,9 +322,9 @@ cd /work_beegfs/sunam232/Metagenomics/ARCHAEA_BIN_REFINEMENT/
 mkdir GUNC
 
 for i in *.fa; do gunc run -i "$i" -r /work_beegfs/sunam232/Databases/gunc_db_progenomes2.1.dmnd --out_dir GUNC --threads 10 --detailed_output; done
-gunc plot -d ./GUNC/diamond_output/METABAT__25-contigs.diamond.progenomes_2.1.out -g ./GUNC/genes_calls/gene_counts.json
-gunc plot -d ./GUNC/diamond_output/METABAT__14-contigs.diamond.progenomes_2.1.out -g ./GUNC/genes_calls/gene_counts.json
-gunc plot -d ./GUNC/diamond_output/METABAT__41-contigs.diamond.progenomes_2.1.out -g ./GUNC/genes_calls/gene_counts.json
+gunc plot -d ./GUNC/diamond_output/METABAT__25-contigs.diamond.progenomes_2.1.out -g ./GUNC/gene_calls/gene_counts.json
+gunc plot -d ./GUNC/diamond_output/METABAT__14-contigs.diamond.progenomes_2.1.out -g ./GUNC/gene_calls/gene_counts.json
+gunc plot -d ./GUNC/diamond_output/METABAT__41-contigs.diamond.progenomes_2.1.out -g ./GUNC/gene_calls/gene_counts.json
 ```
 
 
